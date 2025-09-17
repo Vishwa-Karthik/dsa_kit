@@ -28,6 +28,25 @@ class MinHeap<T extends Comparable> implements Heap<T> {
     return _data.first;
   }
 
+  /// Returns a pretty-printed heap (level order).
+  @override
+  String printHeap() {
+    /// Returns the heap as a table string with header info.
+    if (_data.isEmpty) return '| Heap is empty |\n';
+
+    final buffer = StringBuffer();
+    buffer.writeln('--- $runtimeType (size=$length) ---');
+    buffer.writeln('| val |');
+    buffer.writeln('|-----|');
+
+    for (final item in _data) {
+      buffer.writeln('| $item |');
+    }
+
+    buffer.writeln('--- End of Heap ---');
+    return buffer.toString();
+  }
+
   @override
   bool get isEmpty => _data.isEmpty;
 

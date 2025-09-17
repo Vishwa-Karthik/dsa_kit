@@ -29,6 +29,29 @@ class MaxHeap<T extends Comparable> implements Heap<T> {
   }
 
   @override
+  String printHeap() {
+    if (_data.isEmpty) return '| Heap is empty |\n';
+
+    final buffer = StringBuffer();
+    buffer.writeln('--- $runtimeType (size=$length, sorted) ---');
+    buffer.writeln('| val |');
+    buffer.writeln('|-----|');
+
+    // clone heap so we don't destroy original
+    final clone = MaxHeap<T>();
+    for (final item in _data) {
+      clone.push(item);
+    }
+
+    while (!clone.isEmpty) {
+      buffer.writeln('| ${clone.pop()} |'); // largest first
+    }
+
+    buffer.writeln('--- End of Heap ---');
+    return buffer.toString();
+  }
+
+  @override
   bool get isEmpty => _data.isEmpty;
 
   @override

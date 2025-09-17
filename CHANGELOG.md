@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.2] - 2025-09-17
+### Added
+- Implemented **MaxHeap** with:
+  - `push`, `pop`, `peek`, `isEmpty`, `length`
+  - `printHeap()` for pretty-printing heap levels
+- Unified **Heap interface** with SOLID principles
+- Improved `pubspec.yaml` to support Dart `>=3.2.0 <4.0.0`
 
 ## [0.0.1] - 2025-09-16
 ### Added
