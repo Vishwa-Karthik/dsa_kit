@@ -3,13 +3,15 @@
 abstract class Heap<T extends Comparable> {
   void push(T value);
 
-  T pop();
+  T? pop();
 
-  T peek();
+  T? peek();
 
   String printHeap();
 
   bool get isEmpty;
 
   int get length;
+
+  int get size;
 }

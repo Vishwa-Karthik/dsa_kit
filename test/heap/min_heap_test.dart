@@ -27,14 +27,14 @@ void main() {
       expect(heap.length, equals(3));
     });
 
-    test('throws error on pop when empty', () {
+    test('Return Null on pop when empty', () {
       final heap = MinHeap<int>();
-      expect(() => heap.pop(), throwsStateError);
+      expect(heap.pop(), null);
     });
 
-    test('throws error on peek when empty', () {
+    test('Return Null on peek when empty', () {
       final heap = MinHeap<int>();
-      expect(() => heap.peek(), throwsStateError);
+      expect(heap.peek(), null);
     });
   });
 }

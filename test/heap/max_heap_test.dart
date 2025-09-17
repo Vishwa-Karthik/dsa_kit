@@ -27,14 +27,14 @@ void main() {
       expect(heap.length, equals(3));
     });
 
-    test('throws error on pop when empty', () {
+    test('return null on pop when empty', () {
       final heap = MaxHeap<int>();
-      expect(() => heap.pop(), throwsStateError);
+      expect(heap.pop(), null);
     });
 
-    test('throws error on peek when empty', () {
+    test('return null on peek when empty', () {
       final heap = MaxHeap<int>();
-      expect(() => heap.peek(), throwsStateError);
+      expect(heap.peek(), null);
     });
   });
 }

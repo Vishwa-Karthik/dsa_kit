@@ -1,66 +1,56 @@
-import 'heap_base.dart';
+import 'package:dsa_kit/heap/heap_base.dart';
 
-/// A MaxHeap implementation using List as the underlying storage.
 class MaxHeap<T extends Comparable> implements Heap<T> {
-  final List<T> _data = [];
+  List<T> _heap = [];
 
+  /// Build heap from a list in O(n)
+  void heapify(List<T> values) {
+    _heap = List<T>.from(values);
+    for (int i = _parentIndex(_heap.length - 1); i >= 0; i--) {
+      _heapifyDown(i);
+    }
+  }
+
+  @override
+  bool get isEmpty => _heap.isEmpty;
+
+  @override
+  int get size => _heap.length;
+
+  @override
+  int get length => _heap.length;
+
+  /// Peek the largest element without removing it
+  @override
+  T? peek() => isEmpty ? null : _heap.first;
+
+  /// Insert a value into the heap
   @override
   void push(T value) {
-    _data.add(value);
-    _bubbleUp(_data.length - 1);
+    _heap.add(value);
+    _heapifyUp(_heap.length - 1);
   }
 
+  /// Remove and return the largest element
   @override
-  T pop() {
-    if (_data.isEmpty) throw StateError('Heap is empty');
-    final root = _data.first;
-    final last = _data.removeLast();
-    if (_data.isNotEmpty) {
-      _data[0] = last;
-      _bubbleDown(0);
+  T? pop() {
+    if (isEmpty) return null;
+    _swap(0, _heap.length - 1);
+    final T maxValue = _heap.removeLast();
+    if (!isEmpty) {
+      _heapifyDown(0);
     }
-    return root;
+    return maxValue;
   }
 
-  @override
-  T peek() {
-    if (_data.isEmpty) throw StateError('Heap is empty');
-    return _data.first;
-  }
+  int _parentIndex(int i) => (i - 1) ~/ 2;
+  int _leftChildIndex(int i) => 2 * i + 1;
+  int _rightChildIndex(int i) => 2 * i + 2;
 
-  @override
-  String printHeap() {
-    if (_data.isEmpty) return '| Heap is empty |\n';
-
-    final buffer = StringBuffer();
-    buffer.writeln('--- $runtimeType (size=$length, sorted) ---');
-    buffer.writeln('| val |');
-    buffer.writeln('|-----|');
-
-    // clone heap so we don't destroy original
-    final clone = MaxHeap<T>();
-    for (final item in _data) {
-      clone.push(item);
-    }
-
-    while (!clone.isEmpty) {
-      buffer.writeln('| ${clone.pop()} |'); // largest first
-    }
-
-    buffer.writeln('--- End of Heap ---');
-    return buffer.toString();
-  }
-
-  @override
-  bool get isEmpty => _data.isEmpty;
-
-  @override
-  int get length => _data.length;
-
-  void _bubbleUp(int index) {
+  void _heapifyUp(int index) {
     while (index > 0) {
-      final parent = (index - 1) >> 1;
-      if (_data[index].compareTo(_data[parent]) > 0) {
+      int parent = _parentIndex(index);
+      if (_heap[index].compareTo(_heap[parent]) > 0) {
         _swap(index, parent);
         index = parent;
       } else {
@@ -69,29 +59,42 @@ class MaxHeap<T extends Comparable> implements Heap<T> {
     }
   }
 
-  void _bubbleDown(int index) {
-    final length = _data.length;
-    while (true) {
-      final left = (index << 1) + 1;
-      final right = left + 1;
-      int largest = index;
+  void _heapifyDown(int index) {
+    final int end = _heap.length - 1;
+    while (_leftChildIndex(index) <= end) {
+      int left = _leftChildIndex(index);
+      int right = _rightChildIndex(index);
 
-      if (left < length && _data[left].compareTo(_data[largest]) > 0) {
-        largest = left;
+      int swapIndex = left;
+      if (right <= end && _heap[right].compareTo(_heap[left]) > 0) {
+        swapIndex = right;
       }
-      if (right < length && _data[right].compareTo(_data[largest]) > 0) {
-        largest = right;
-      }
-      if (largest == index) break;
 
-      _swap(index, largest);
-      index = largest;
+      if (_heap[swapIndex].compareTo(_heap[index]) > 0) {
+        _swap(index, swapIndex);
+        index = swapIndex;
+      } else {
+        break;
+      }
     }
   }
 
   void _swap(int i, int j) {
-    final tmp = _data[i];
-    _data[i] = _data[j];
-    _data[j] = tmp;
+    final tmp = _heap[i];
+    _heap[i] = _heap[j];
+    _heap[j] = tmp;
+  }
+
+  @override
+  String printHeap() {
+    final buffer = StringBuffer();
+    buffer.writeln('--- MaxHeap<$T> (size=$size) ---');
+    buffer.writeln('| val |');
+    buffer.writeln('|-----|');
+    for (final val in _heap) {
+      buffer.writeln('| $val |');
+    }
+    buffer.writeln('--- End of Heap ---');
+    return buffer.toString();
   }
 }

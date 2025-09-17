@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.3] - 2025-09-18
+### Added
+- Improvised **MaxHeap** & **MinHeap** implementation.
+- Updated Heap's tests.
+- Unified **Heap interface** with SOLID principles
+
 ## [0.0.2] - 2025-09-17
 ### Added
 - Implemented **MaxHeap** with:
