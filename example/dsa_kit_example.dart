@@ -27,6 +27,8 @@ void handleDeque() {
   print('Peek left: ${deque.peekLeft()}'); // -1
   print('Peek right: ${deque.peekRight()}'); // 3
 
+  print('Dequeue List is ${deque.toList()}');
+
   // Pop values from both ends
   print('Pop left: ${deque.popLeft()}'); // -1
   print('Pop right: ${deque.popRight()}'); // 3

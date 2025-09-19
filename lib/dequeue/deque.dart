@@ -45,5 +45,5 @@ class Deque<T> implements DequeBase<T> {
   }
 
   @override
-  String toString() => 'Deque<$T>($_list)';
+  List<T> toList() => _list;
 }

@@ -21,4 +21,6 @@ abstract class DequeBase<T> {
   void clear();
 
   String prettyPrint();
+
+  List<T> toList();
 }
