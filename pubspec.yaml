@@ -1,6 +1,6 @@
 name: dsa_kit
-description: "A scalable DSA utilities kit for Dart. Includes MinHeap, MaxHeap, and more."
-version: 0.0.3
+description: "A scalable DSA utilities kit for Dart. Includes Heaps, DeQueues, and more."
+version: 0.0.4
 repository: https://github.com/Vishwa-Karthik/dsa_kit
 homepage: https://github.com/Vishwa-Karthik/dsa_kit
 issue_tracker: https://github.com/Vishwa-Karthik/dsa_kit/issues
@@ -18,7 +18,7 @@ platforms:
   windows:
 
 topics:
-  - dsa
+  - dsa-kit
   - built-in-methods
 
 dev_dependencies:

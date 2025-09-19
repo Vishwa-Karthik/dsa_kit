@@ -69,51 +69,43 @@ void main() {
     print(taskHeap.pop().name); // Outputs in priority order
   }
 }
-
-class Task implements Comparable<Task> {
-  final String name;
-  final int priority;
-  
-  Task(this.name, this.priority);
-  
-  @override
-  int compareTo(Task other) => priority.compareTo(other.priority);
-}
 ```
 
-### Common Use Cases
+### Deque
+Efficient for adding/removing elements from both ends. Perfect for sliding windows, BFS/DFS, and scheduling tasks.
 
-**Finding K Largest Elements:**
 ```dart
-List<int> findKLargest(List<int> nums, int k) {
-  var minHeap = MinHeap<int>();
-  
-  for (var num in nums) {
-    minHeap.push(num);
-    if (minHeap.length > k) {
-      minHeap.pop();
-    }
-  }
-  
-  return minHeap.toList();
+import 'package:dsa_kit/dsa_kit.dart';
+
+void main() {
+  final deque = Deque<int>();
+
+  // Append values to the right (end)
+  deque.appendRight(1);
+  deque.appendRight(2);
+  deque.appendRight(3);
+  print(deque.prettyPrint()); // Output: [1, 2, 3]
+
+  // Append values to the left (front)
+  deque.appendLeft(0);
+  deque.appendLeft(-1);
+  print(deque.prettyPrint()); // Output: [-1, 0, 1, 2, 3]
+
+  // Peek values without removing
+  print(deque.peekLeft());   // Output: -1
+  print(deque.peekRight());  // Output: 3
+
+  // Pop values from both ends
+  print(deque.popLeft());   // Output: -1
+  print(deque.popRight());  // Output: 3
+  print(deque.prettyPrint()); // Output: [0, 1, 2]
+
+  // Clear the deque
+  deque.clear();
+  print(deque.prettyPrint()); // Output: []
 }
 ```
 
-
-## 🏗️ Architecture
-
-The package follows SOLID principles with a clean, extensible architecture:
-
-```
-lib/
-├── dsa_kit.dart           // Main export file
-└── heaps/
-    ├── heap_base.dart     // Abstract base class
-    ├── min_heap.dart      // Concrete MinHeap implementation
-    └── max_heap.dart      // Concrete MaxHeap implementation
-```
-
-All data structures implement intuitive interfaces and are designed for easy extension and modification.
 
 ## 🧪 Testing
 

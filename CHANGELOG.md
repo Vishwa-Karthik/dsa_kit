@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.0.4] - 2025-09-19
+### Added
+- Introduced `DequeBase<T>` (abstract base class) to follow **SOLID principles** and define the contract for double-ended queues.
+- Added `Deque<T>` implementation using `List.empty(growable: true)` internally.
+  - `appendRight(T value)`
+  - `appendLeft(T value)`
+  - `popRight()`
+  - `popLeft()`
+  - `peekRight()`
+  - `peekLeft()`
+  - `isEmpty`, `length`, `size`
+  - `clear()`
+  - `prettyPrint()` for horizontal array-like output.
+
+- Added **unit tests (`deque_test.dart`)** covering:
+  - Empty deque behavior
+  - Append and Pop operations from both ends
+  - Mixed usage scenarios
+  - Clearing the deque
+  - Pretty print and `toString()` output validation
+
 ## [0.0.3] - 2025-09-18
 ### Added
 - Improvised **MaxHeap** & **MinHeap** implementation.
