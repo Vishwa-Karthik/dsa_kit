@@ -1,6 +1,6 @@
 name: dsa_kit
 description: "A scalable DSA utilities kit for Dart. Includes Heaps, DeQueues, and more."
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/Vishwa-Karthik/dsa_kit
 homepage: https://github.com/Vishwa-Karthik/dsa_kit
 issue_tracker: https://github.com/Vishwa-Karthik/dsa_kit/issues

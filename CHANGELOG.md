@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.5] - 2025-09-28
+### Added
+- Added `INT` extension providing convenient constants:
+  - `INT.infinity` - Maximum positive integer value
+  - `INT.negativeInfinity` - Minimum negative integer value
+- Updated documentation and examples for INT extensions
+
+
 ## [0.0.4] - 2025-09-19
 ### Added
 - Introduced `DequeBase<T>` (abstract base class) to follow **SOLID principles** and define the contract for double-ended queues.

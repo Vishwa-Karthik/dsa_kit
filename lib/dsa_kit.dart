@@ -4,3 +4,5 @@ export 'heap/max_heap.dart';
 
 export 'dequeue/dequeue_base.dart';
 export 'dequeue/deque.dart';
+
+export 'core/infinity.dart';

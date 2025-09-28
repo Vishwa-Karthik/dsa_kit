@@ -1,4 +1,4 @@
-# dsa_kit
+# DSA KIT
 
 [![Pub Version](https://img.shields.io/pub/v/dsa_kit)](https://pub.dev/packages/dsa_kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,14 +8,19 @@ A scalable Data Structures & Algorithms toolkit for Dart, designed to make compe
 
 ## 🎯 Why dsa_kit?
 
-Coming from Python or Java, you might miss the convenience of `heapq` or `Collections.PriorityQueue`. Dart's core libraries are excellent, but they don't include specialized data structures that are essential for algorithmic problem-solving. 
+When working with Dart, you might notice that while its core libraries are powerful, they don’t provide many of the classic data structures (like heaps, deques, or specialized queues) that are common in languages such as Python (heapq, collections.deque) or Java (PriorityQueue, LinkedList).
 
-**dsa_kit** bridges this gap by providing:
-- 🏗️ **Production-ready** implementations following SOLID principles
-- 🧪 **Thoroughly tested** components with comprehensive test coverage
-- 📚 **Learning-friendly** code with clear documentation and examples
-- ⚡ **Performance-optimized** algorithms suitable for competitive programming
-- 🎓 **Interview-ready** utilities that you can confidently use and explain
+This is where dsa_kit comes in. It’s designed to give you the building blocks you need for problem-solving, algorithm practice, and production systems:
+
++ 🏗️ Well-structured & SOLID – clean, maintainable, and extensible implementations.
+
++ 🧪 Battle-tested – backed by strong unit tests to ensure reliability.
+
++ 📚 Beginner-friendly – readable code and examples for learning and interviews.
+
++ ⚡ Optimized for performance – suitable for competitive programming and high-throughput apps.
+
++ 🚀 Practical & ready-to-use – fills the gap between Dart’s core libraries and real-world problem-solving needs.
 
 ## 🚀 Quick Start
 
@@ -23,7 +28,7 @@ Add `dsa_kit` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dsa_kit: ^0.0.1
+  dsa_kit: <latest-version>
 ```
 
 Run:
@@ -31,80 +36,19 @@ Run:
 dart pub get
 ```
 
-## 📖 Usage
+## 📦 Available Data Structures
 
-### Heaps
+| Data Structure                 | Variants / Implementations         | Key Features                                                                                                                  | Example Use Cases                                                            |
+| ------------------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Heap**                       | - `MinHeap<T>` <br> - `MaxHeap<T>` | - Priority-based ordering <br> - `push`, `pop`, `peek` <br> - Works with `Comparable` and custom objects                      | - Priority Queues <br> - Find k-th smallest/largest <br> - Heap Sort         |
+| **Deque** (Double-Ended Queue) | - `Deque<T>`                       | - Insert/remove from both ends <br> - `appendLeft`, `appendRight` <br> - `popLeft`, `popRight` <br> - `peekLeft`, `peekRight` | - Sliding Window Problems <br> - Palindrome checks <br> - BFS/DFS variations |
 
-Perfect for priority queues, finding k-th largest/smallest elements, and heap sort implementations.
+## 🛠️ Utilities
 
-```dart
-import 'package:dsa_kit/dsa_kit.dart';
+| Utility                    | Description                                                      | Example Usage                                      |
+| ------------------------- | ---------------------------------------------------------------- | ------------------------------------------------- |
+| **Int Extensions**        | Convenient constants for integer bounds                           | `INT.infinity`, `INT.negativeInfinity`     |
 
-void main() {
-  // Min Heap - smallest element first
-  var minHeap = MinHeap<int>();
-  minHeap.push(10);
-  minHeap.push(5);
-  minHeap.push(15);
-  
-  print(minHeap.peek()); // Output: 5
-  print(minHeap.pop());  // Output: 5
-  
-  // Max Heap - largest element first  
-  var maxHeap = MaxHeap<String>();
-  maxHeap.push("apple");
-  maxHeap.push("zebra");
-  maxHeap.push("banana");
-  
-  print(maxHeap.peek()); // Output: zebra
-  print(maxHeap.pop());  // Output: zebra
-  
-  // Works with custom objects too!
-  var taskHeap = MinHeap<Task>();
-  taskHeap.push(Task("Low priority", 3));
-  taskHeap.push(Task("High priority", 1));
-  taskHeap.push(Task("Medium priority", 2));
-  
-  while (!taskHeap.isEmpty) {
-    print(taskHeap.pop().name); // Outputs in priority order
-  }
-}
-```
-
-### Deque
-Efficient for adding/removing elements from both ends. Perfect for sliding windows, BFS/DFS, and scheduling tasks.
-
-```dart
-import 'package:dsa_kit/dsa_kit.dart';
-
-void main() {
-  final deque = Deque<int>();
-
-  // Append values to the right (end)
-  deque.appendRight(1);
-  deque.appendRight(2);
-  deque.appendRight(3);
-  print(deque.prettyPrint()); // Output: [1, 2, 3]
-
-  // Append values to the left (front)
-  deque.appendLeft(0);
-  deque.appendLeft(-1);
-  print(deque.prettyPrint()); // Output: [-1, 0, 1, 2, 3]
-
-  // Peek values without removing
-  print(deque.peekLeft());   // Output: -1
-  print(deque.peekRight());  // Output: 3
-
-  // Pop values from both ends
-  print(deque.popLeft());   // Output: -1
-  print(deque.popRight());  // Output: 3
-  print(deque.prettyPrint()); // Output: [0, 1, 2]
-
-  // Clear the deque
-  deque.clear();
-  print(deque.prettyPrint()); // Output: []
-}
-```
 
 
 ## 🧪 Testing
@@ -139,7 +83,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Vishwa Karthik**  
 *Software Engineer passionate about algorithms and clean code*
 
-- 🌐 Domain: `in.vishwakarthik`
-- 📦 Package: `dsa_kit`
-
+- 🌐 Domain: [in.vishwakarthik](https://vishwakarthik.in)
 ---
